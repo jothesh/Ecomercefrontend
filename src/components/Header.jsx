@@ -127,7 +127,7 @@ function Header (){
 </header>
   
         
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
      <Login/>
       </Modal>
 

@@ -1,58 +1,85 @@
 import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox
-}
-from 'mdb-react-ui-kit';
+import './Login.css';
+import { Button, Checkbox, Form, Input } from 'antd';
+
 
 function Login() {
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
   return (
-    <MDBContainer fluid>
+    <div className='LoginMain'>
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        style={{
+          maxWidth: 600,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your username!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-      <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-        <MDBCol col='12'>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-          <MDBCard className='bg-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '500px'}}>
-            <MDBCardBody className='p-5 w-100 d-flex flex-column'>
+        <Form.Item
+          name="remember"
+          valuePropName="checked"
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-              <h2 className="fw-bold mb-2 text-center">Sign in</h2>
-              <p className="text-white-50 mb-3">Please enter your login and password!</p>
-
-              <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
-              <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
-
-              <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' />
-
-              <MDBBtn size='lg'>
-                Login
-              </MDBBtn>
-
-              <hr className="my-4" />
-
-              <MDBBtn className="mb-2 w-100" size="lg" style={{backgroundColor: '#dd4b39'}}>
-                <MDBIcon fab icon="google" className="mx-2"/>
-                Sign in with google
-              </MDBBtn>
-
-              <MDBBtn className="mb-4 w-100" size="lg" style={{backgroundColor: '#3b5998'}}>
-                <MDBIcon fab icon="facebook-f" className="mx-2"/>
-                Sign in with facebook
-              </MDBBtn>
-
-            </MDBCardBody>
-          </MDBCard>
-
-        </MDBCol>
-      </MDBRow>
-
-    </MDBContainer>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Login
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 
