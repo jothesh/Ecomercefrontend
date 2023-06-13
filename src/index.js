@@ -7,7 +7,8 @@ import {
   Link,
 } from "react-router-dom";
 import Home from "./components/Home";
-import Cardview from "./components/Cardview/Cardview";
+// import Cardview from "./components/Cardview/Cardview";
+import Cardviewrow from './components/Cardviewrow/Cardviewrow'
 import { ProductView } from "./components/Productview/ProductView";
 import Login from "./components/Login/Login";
 
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "card-view",
-    element: <Cardview/>,
+    element: <Cardviewrow/>,
   },
   {
     path: "product-view",
